@@ -1,4 +1,4 @@
-local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.2", function(plugin)
+local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.3", function(plugin)
   plugin.onEnable(function()
     plugin.print("LukkitEssentials v" .. plugin.version .. " enabled")
   end)
@@ -39,7 +39,18 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.2", function(
     local testPlayer = sender:IsOp()
     if testPlayer == true then
       local bukkit = luajava.bindClass("org.bukkit")
-      bukkit.GameMode(value)
+      if value == "creative" then
+        player:bukkit.GameMode(CREATIVE)
+      end
+      if value == "survival" then
+        player:bukkit.GameMode(SURVIVAL)
+      end
+      if value == 0 then
+        player:bukkit.GameMode(SURVIVAL)
+      end
+      if value == 1 then
+        player:bukkit.GameMode(CREATIVE)
+      end 
       sender:sendMessage("[LUKKIT] Your gamemode;" .. value .. "has been successfully set.")
       --sender:sendMessage("[LUKKIT] Sorry, something failed in the code of changing the gamemode.")
       --plugin.warn("[LUKKIT] Problemo, gamemode needs documentation from jd.bukkit.org.")
