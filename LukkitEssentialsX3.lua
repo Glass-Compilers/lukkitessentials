@@ -1,4 +1,4 @@
-local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.0", function(plugin)
+local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.1", function(plugin)
   plugin.onEnable(function()
     plugin.print("LukkitEssentials v" .. plugin.version .. " enabled")
   end)
@@ -8,7 +8,7 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.0", function(
   end)
 
   plugin.addCommand("aboutessentials", "Finds out specs about LukkitEssentials", "/aboutessentials", function(sender)
-    sender:sendMessage("[LUKKIT] LukkitEssentials is at " .. plugin.version .. "for Lukkit")
+    sender:sendMessage("[LUKKIT] LukkitEssentials is at " .. plugin.version .. " for Lukkit")
   end)
 
   plugin.addCommand("forceupdate", "Forceupdates LukkitEssentials with libStorage.", "/forceupdate", function(sender)
@@ -18,14 +18,18 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.0", function(
   end)
   
   plugin.addCommand("weather", "Changes the world's weather.", "/weather type", function(sender, weather)
-    if sender:IsOp() then
+    local player = server.getPlayer(sender)
+    local testPlayer = sender:IsOp()
+    if testPlayer == true then
       sender:sendMessage("[LUKKIT] Something happened when trying to configure the weather.")
       plugin.warn("[LUKKIT] Lukkit failed to respond to plugin event, responding null.")
     end
   end)
 
   plugin.addCommand("time", "Changes the world's time.", "/time value", function(sender, time)
-    if sender:IsOp() then
+    local player = server.getPlayer(sender)
+    local testPlayer = sender:IsOp()
+    if testPlayer == true then
     require("libStorage.lua")
     plugin.warn("[LUKKIT] I blame Minecraft's constant UUID changing.")
     sender:sendMessage("[LUKKIT] Time has failed, forever!")
@@ -34,7 +38,8 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.0", function(
 
   plugin.addCommand("gm", "A alias of gamemode.", "/gm value", function(sender, value)
     local player = server.getPlayer(sender)
-    if player:IsOp() then
+    local testPlayer = sender:IsOp()
+    if testPlayer == true then
       local bukkit = luajava.bindClass("org.bukkit")
       bukkit.GameMode(value)
       sender:sendMessage("[LUKKIT] Your gamemode;" .. value .. "has been successfully set.")
@@ -44,9 +49,10 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.0", function(
   end)
 
   plugin.addCommand("apidoccheck", "Finds out if the apidoc service is enabled.", "/apidoccheck", function(sender)
-    if sender:IsOp() then
-      sender:sendMessage("[LUKKIT] why why why!!! Lukkit Essentials is weak without apidocs.")
-      plugin.warn("[LUKKIT] HttpRequest failed to contact server; jd.bukkit.org/apidocs")
+    local player = server.getPlayer(sender)
+    local testPlayer = sender:IsOp()
+    if testPlayer == true then
+      sender:sendMessage("[LUKKIT] HttpRequest is a success! (using SpigotDocs1.8) at http://hub.spigotmc.org/javadocs/bukkit")
     end
   end)
   plugin.addCommand("about", "Finds out the version of Lukkit the server is running.", "/about", function(sender)
@@ -55,7 +61,7 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.0", function(
 
   plugin.addCommand("kill", "Kills the specified person.", "/kill player", function(sender, player)
     sender:sendMessage("[LUKKIT] Lukkit can't find bukkit:kill, nulling response.")
-    plugin.warn("[LUKKIT] Lukkit api-docs failed to start, stopping command execution.")
+    plugin.warn("[LUKKIT] Lukkit api-docs success, function not found.")
   end)
 
   plugin.addCommand("pl", "A alias to /plugins", "/pl", function(sender)
