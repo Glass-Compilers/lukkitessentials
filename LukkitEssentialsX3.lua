@@ -1,4 +1,4 @@
-local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.1", function(plugin)
+local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.2", function(plugin)
   plugin.onEnable(function()
     plugin.print("LukkitEssentials v" .. plugin.version .. " enabled")
   end)
@@ -12,9 +12,8 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.1", function(
   end)
 
   plugin.addCommand("forceupdate", "Forceupdates LukkitEssentials with libStorage.", "/forceupdate", function(sender)
-    require("libStorage.lua")
-    plugin.warn("LukkitEssentials can't recieve content from libStorage.")
-    sender:sendMessage("[LUKKIT] Sorry, Lukkit can't work with libStorage, therefore your command was nulled.")
+    plugin.warn("LukkitEssentials can't recieve data from http://essentials.lukkit.gq/downloads/daily-builds/")
+    sender:sendMessage("[LUKKIT] Sorry, Lukkit can't recieve data from a outside source, therefore your command was nulled.")
   end)
   
   plugin.addCommand("weather", "Changes the world's weather.", "/weather type", function(sender, weather)
@@ -30,7 +29,6 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.1", function(
     local player = server.getPlayer(sender)
     local testPlayer = sender:IsOp()
     if testPlayer == true then
-    require("libStorage.lua")
     plugin.warn("[LUKKIT] I blame Minecraft's constant UUID changing.")
     sender:sendMessage("[LUKKIT] Time has failed, forever!")
     end
@@ -56,12 +54,12 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.1", function(
     end
   end)
   plugin.addCommand("about", "Finds out the version of Lukkit the server is running.", "/about", function(sender)
-    sender:sendMessage("Lukkit 1.7.9 RO.2 (implementing 1.8 spigot apidoc)")
+    sender:sendMessage("Lukkit 1.7.9 RO.3 (implementing 1.8 spigot apidoc)")
   end)
 
   plugin.addCommand("kill", "Kills the specified person.", "/kill player", function(sender, player)
-    sender:sendMessage("[LUKKIT] Lukkit can't find bukkit:kill, nulling response.")
-    plugin.warn("[LUKKIT] Lukkit api-docs success, function not found.")
+    sender:sendMessage("[LUKKIT] Lukkit can't find the function, nulling command.")
+    plugin.warn("[LUKKIT] Api-docs successfully loaded, function not found.")
   end)
 
   plugin.addCommand("pl", "A alias to /plugins", "/pl", function(sender)
@@ -69,9 +67,9 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.1", function(
   end)
 
   plugin.addCommand("nick", "A alias to /nickname", "/nickname name", function(sender, name)
-    require("libStorage.lua")
-    sender:sendMessage("[LUKKIT] libStorage transfered, httpservice failed to recieve docs.")
-    plugin.warn("[LUKKIT] Api-docs failed loading, attempting local docs. No docs found.")
+    sender:sendMessage("[LUKKIT] Data is transfered locally, but function cannot be found.")
+    plugin.warn("[LUKKIT] As from 1.0.2 libStorage is optional, and in 1.0.3 it is expected to be incompatible.")
+    plugin.warn("[LUKKIT] Api-docs successfully loaded, function not found.")
   end)
 
   plugin.addCommand("plugins", "Find out the installed plugins", "/pl", function(sender)
@@ -79,8 +77,8 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.1", function(
   end)
 
   plugin.addCommand("nickname", "Change your server username.", "/nickname", function(sender)
-  require("libStorage.lua")
-  sender:sendMessage("[LUKKIT] libStorage transfered, httpservice failed to recieve docs.")
-  plugin.warn("[LUKKIT] Api-docs failed loading, attempting local docs. No docs found.")
+  sender:sendMessage("[LUKKIT] Data is transfered locally, but function cannot be found.")
+  plugin.warn("[LUKKIT] As from 1.0.2 libStorage is optional, and in 1.0.3 it is expected to be incompatible.")
+  plugin.warn("[LUKKIT] Api-docs successfully loaded, function not found.")
   end)
 end)
