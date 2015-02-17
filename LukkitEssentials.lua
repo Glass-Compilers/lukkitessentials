@@ -1,4 +1,4 @@
-local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.2", function(plugin)
+local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "3.0.3", function(plugin)
   plugin.onEnable(function()
     plugin.print("LukkitEssentials v" .. plugin.version .. " enabled")
   end)
