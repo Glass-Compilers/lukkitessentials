@@ -75,7 +75,18 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.2", function(
   plugin.addCommand("plugins", "Find out the installed plugins", "/pl", function(sender)
     sender:sendMessage("Plugins: Lukkit, LukkitAPI, LukkitEssentials, SpigotDocs, BukkitEmuAPI, BukkitSeperateLoader")
   end)
-
+  
+    plugin.addCommand("plugins", "Find out the installed plugins", "/bukkit:pl", function(sender)
+    sender:sendMessage("Plugins: Lukkit, LukkitAPI, LukkitEssentials, SpigotDocs, BukkitEmuAPI, BukkitSeperateLoader")
+  end)
+  
+    plugin.addCommand("plugins", "Find out the installed plugins", "/plugins", function(sender)
+    sender:sendMessage("Plugins: Lukkit, LukkitAPI, LukkitEssentials, SpigotDocs, BukkitEmuAPI, BukkitSeperateLoader")
+  end)
+  
+  plugin.addCommand("plugins", "Find out the installed plugins", "/bukkit:plugins", function(sender)
+    sender:sendMessage("Plugins: Lukkit, LukkitAPI, LukkitEssentials, SpigotDocs, BukkitEmuAPI, BukkitSeperateLoader")
+  end)
   plugin.addCommand("nickname", "Change your server username.", "/nickname", function(sender)
   sender:sendMessage("[LUKKIT] Data is transfered locally, but function cannot be found.")
   plugin.warn("[LUKKIT] As from 1.0.2 libStorage is optional, and in 1.0.3 it is expected to be incompatible.")
