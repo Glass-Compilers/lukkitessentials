@@ -68,9 +68,14 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.3", function(
     sender:sendMessage("Lukkit 1.7.9 RO.3 (implementing 1.8 spigot apidoc)")
   end)
 
-  plugin.addCommand("kill", "Kills the specified person.", "/kill player", function(sender, player)
-    sender:sendMessage("[LUKKIT] Lukkit can't find the function, nulling command.")
-    plugin.warn("[LUKKIT] Api-docs successfully loaded, function not found.")
+  plugin.addCommand("kill", "Kills the specified person.", "/kill player", function(sender, player) -- Thanks, Zopiac. 
+    local player = server.getPlayer(player)
+    local player2 = server.getPlayer(sender)
+    if player2 == true then
+      player:setHealth(0)
+     end
+   --  sender:sendMessage("[LUKKIT] Lukkit can't find the function, nulling command.")
+   -- plugin.warn("[LUKKIT] Api-docs successfully loaded, function not found.")
   end)
 
   plugin.addCommand("pl", "A alias to /plugins", "/pl", function(sender)
