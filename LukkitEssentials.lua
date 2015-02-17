@@ -39,7 +39,7 @@ local lukkitEssentials = lukkit.addPlugin("LukkitEssentials", "1.0.2", function(
     local testPlayer = sender:IsOp()
     if testPlayer == true then
       local bukkit = luajava.bindClass("org.bukkit")
-      bukkit.GameMode(value)
+      bukkit:GameMode(value)
       sender:sendMessage("[LUKKIT] Your gamemode;" .. value .. "has been successfully set.")
       --sender:sendMessage("[LUKKIT] Sorry, something failed in the code of changing the gamemode.")
       --plugin.warn("[LUKKIT] Problemo, gamemode needs documentation from jd.bukkit.org.")
